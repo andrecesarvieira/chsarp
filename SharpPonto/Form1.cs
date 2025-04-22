@@ -6,6 +6,9 @@ namespace SharpPonto
 {
     public partial class Form1 : Form
     {
+        private readonly Registro registro = new();
+        private DataTable dt = new();
+
         public Form1()
         {
             InitializeComponent();
@@ -17,15 +20,16 @@ namespace SharpPonto
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            this.Text = $"SharpPonto - Versão {version}";
+
             Dados.Database.CriarBancoDeDados();
             Dados.Database.CriarTabela();
             Dados.Database.LerRegistros();
-            
-            ExibirDados();
-            
-            dataGridView1.ClearSelection();
 
             lblPath.Text = Dados.Database.path;
+
+            ExibirDados();
         }
 
         private void ExibirDados()
@@ -33,6 +37,7 @@ namespace SharpPonto
             try
             {
                 dataGridView1.DataSource = Dados.Database.LerRegistros();
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -44,16 +49,7 @@ namespace SharpPonto
         #region "Funções dos botões"
         private void BtnRegistrar_Click(object sender, EventArgs e)
         {
-            Registro registro = new()
-            {
-                Data = DateOnly.FromDateTime(DateTime.Now),
-                Entrada = TimeOnly.FromDateTime(DateTime.Now),
-                Almoco = TimeOnly.FromDateTime(DateTime.Now),
-                Retorno = TimeOnly.FromDateTime(DateTime.Now),
-                Saida = TimeOnly.FromDateTime(DateTime.Now)
-            };
-
-            DataTable dt = new();
+            registro.Data = DateOnly.FromDateTime(DateTime.Now);
 
             try
             {
@@ -69,6 +65,7 @@ namespace SharpPonto
 
             if (dt.Rows.Count == 0)
             {
+                registro.Entrada = TimeOnly.FromDateTime(DateTime.Now);
                 registro.Almoco = TimeOnly.Parse("00:00");
                 registro.Retorno = TimeOnly.Parse("00:00");
                 registro.Saida = TimeOnly.Parse("00:00");
@@ -80,6 +77,8 @@ namespace SharpPonto
             }
             else if (TimeOnly.Parse(dt.Rows[0]["Almoco"].ToString()!) == TimeOnly.Parse("00:00"))
             {
+                registro.Almoco = TimeOnly.FromDateTime(DateTime.Now);
+
                 var hrInicial = dt.Rows[0]["Entrada"].ToString()!;
                 var hrFinal = registro.Almoco.ToString("HH:mm");
 
@@ -89,10 +88,14 @@ namespace SharpPonto
             }
             else if (TimeOnly.Parse(dt.Rows[0]["Retorno"].ToString()!) == TimeOnly.Parse("00:00"))
             {
+                registro.Retorno = TimeOnly.FromDateTime(DateTime.Now);
+
                 n = 3;
             }
             else if (TimeOnly.Parse(dt.Rows[0]["Saida"].ToString()!) == TimeOnly.Parse("00:00"))
             {
+                registro.Saida = TimeOnly.FromDateTime(DateTime.Now);
+
                 var hrInicial = dt.Rows[0]["Retorno"].ToString()!;
                 var hrFinal = registro.Saida.ToString("HH:mm");
 
@@ -110,7 +113,6 @@ namespace SharpPonto
             {
                 Dados.Database.InserirRegistro(registro, n);
                 ExibirDados();
-                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -141,7 +143,6 @@ namespace SharpPonto
                     {
                         Dados.Database.ExcluirRegistro(dataFmt);
                         ExibirDados();
-                        dataGridView1.ClearSelection();
                     }
                 }
                 catch (Exception ex)
@@ -167,16 +168,11 @@ namespace SharpPonto
                 return;
             }
 
-            Registro registro = new()
-            {
-                Data = DateOnly.Parse(textData.Text),
-                Entrada = TimeOnly.Parse(textEntrada.Text),
-                Almoco = TimeOnly.Parse(textAlmoco.Text),
-                Retorno = TimeOnly.Parse(textRetorno.Text),
-                Saida = TimeOnly.Parse(textSaida.Text)
-            };
-
-            DataTable dt = new();
+            registro.Data = DateOnly.Parse(textData.Text);
+            registro.Entrada = TimeOnly.Parse(textEntrada.Text);
+            registro.Almoco = TimeOnly.Parse(textAlmoco.Text);
+            registro.Retorno = TimeOnly.Parse(textRetorno.Text);
+            registro.Saida = TimeOnly.Parse(textSaida.Text);
 
             try
             {
@@ -223,7 +219,6 @@ namespace SharpPonto
             {
                 Dados.Database.InserirRegistro(registro, 5);
                 ExibirDados();
-                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
