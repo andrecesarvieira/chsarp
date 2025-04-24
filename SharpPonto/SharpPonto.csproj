@@ -11,17 +11,6 @@
     <Copyright>André Vieira</Copyright>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Optimize>False</Optimize>
-  </PropertyGroup>
-
-  <PropertyGroup>
-	<Deterministic>false</Deterministic>
-	<Version>1.0.0</Version>
-	<AssemblyVersion>1.0.*</AssemblyVersion>
-	<FileVersion>1.0.0.0</FileVersion>
-  </PropertyGroup>
-
   <ItemGroup>
     <Content Include="Icone\clock.ico" />
   </ItemGroup>

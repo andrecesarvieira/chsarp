@@ -6,9 +6,6 @@ namespace SharpPonto
 {
     public partial class Form1 : Form
     {
-        private readonly Registro registro = new();
-        private DataTable dt = new();
-
         public Form1()
         {
             InitializeComponent();
@@ -20,16 +17,15 @@ namespace SharpPonto
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            this.Text = $"SharpPonto - Versão {version}";
-
             Dados.Database.CriarBancoDeDados();
             Dados.Database.CriarTabela();
             Dados.Database.LerRegistros();
+            
+            ExibirDados();
+            
+            dataGridView1.ClearSelection();
 
             lblPath.Text = Dados.Database.path;
-
-            ExibirDados();
         }
 
         private void ExibirDados()
@@ -37,7 +33,6 @@ namespace SharpPonto
             try
             {
                 dataGridView1.DataSource = Dados.Database.LerRegistros();
-                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -49,7 +44,16 @@ namespace SharpPonto
         #region "Funções dos botões"
         private void BtnRegistrar_Click(object sender, EventArgs e)
         {
-            registro.Data = DateOnly.FromDateTime(DateTime.Now);
+            Registro registro = new()
+            {
+                Data = DateOnly.FromDateTime(DateTime.Now),
+                Entrada = TimeOnly.FromDateTime(DateTime.Now),
+                Almoco = TimeOnly.FromDateTime(DateTime.Now),
+                Retorno = TimeOnly.FromDateTime(DateTime.Now),
+                Saida = TimeOnly.FromDateTime(DateTime.Now)
+            };
+
+            DataTable dt = new();
 
             try
             {
@@ -65,7 +69,6 @@ namespace SharpPonto
 
             if (dt.Rows.Count == 0)
             {
-                registro.Entrada = TimeOnly.FromDateTime(DateTime.Now);
                 registro.Almoco = TimeOnly.Parse("00:00");
                 registro.Retorno = TimeOnly.Parse("00:00");
                 registro.Saida = TimeOnly.Parse("00:00");
@@ -77,34 +80,28 @@ namespace SharpPonto
             }
             else if (TimeOnly.Parse(dt.Rows[0]["Almoco"].ToString()!) == TimeOnly.Parse("00:00"))
             {
-                registro.Almoco = TimeOnly.FromDateTime(DateTime.Now);
-
                 var hrInicial = dt.Rows[0]["Entrada"].ToString()!;
                 var hrFinal = registro.Almoco.ToString("HH:mm");
 
-                registro.Manha = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal, 1));
+                registro.Manha = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal));
 
                 n = 2;
             }
             else if (TimeOnly.Parse(dt.Rows[0]["Retorno"].ToString()!) == TimeOnly.Parse("00:00"))
             {
-                registro.Retorno = TimeOnly.FromDateTime(DateTime.Now);
-
                 n = 3;
             }
             else if (TimeOnly.Parse(dt.Rows[0]["Saida"].ToString()!) == TimeOnly.Parse("00:00"))
             {
-                registro.Saida = TimeOnly.FromDateTime(DateTime.Now);
-
                 var hrInicial = dt.Rows[0]["Retorno"].ToString()!;
                 var hrFinal = registro.Saida.ToString("HH:mm");
 
-                registro.Tarde = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal, 1));
+                registro.Tarde = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal));
 
                 var totalManha = dt.Rows[0]["Manha"].ToString()!;
                 var totalTarde = registro.Tarde.ToString("HH:mm");
 
-                registro.TotalDia = TimeOnly.FromTimeSpan(CalcularPeriodo(totalManha, totalTarde, 2));
+                registro.TotalDia = TimeOnly.FromTimeSpan(CalcularTotalDia(totalManha, totalTarde));
 
                 n = 4;
             }
@@ -113,6 +110,7 @@ namespace SharpPonto
             {
                 Dados.Database.InserirRegistro(registro, n);
                 ExibirDados();
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -143,6 +141,7 @@ namespace SharpPonto
                     {
                         Dados.Database.ExcluirRegistro(dataFmt);
                         ExibirDados();
+                        dataGridView1.ClearSelection();
                     }
                 }
                 catch (Exception ex)
@@ -168,11 +167,16 @@ namespace SharpPonto
                 return;
             }
 
-            registro.Data = DateOnly.Parse(textData.Text);
-            registro.Entrada = TimeOnly.Parse(textEntrada.Text);
-            registro.Almoco = TimeOnly.Parse(textAlmoco.Text);
-            registro.Retorno = TimeOnly.Parse(textRetorno.Text);
-            registro.Saida = TimeOnly.Parse(textSaida.Text);
+            Registro registro = new()
+            {
+                Data = DateOnly.Parse(textData.Text),
+                Entrada = TimeOnly.Parse(textEntrada.Text),
+                Almoco = TimeOnly.Parse(textAlmoco.Text),
+                Retorno = TimeOnly.Parse(textRetorno.Text),
+                Saida = TimeOnly.Parse(textSaida.Text)
+            };
+
+            DataTable dt = new();
 
             try
             {
@@ -195,7 +199,7 @@ namespace SharpPonto
                 var hrFinal = registro.Almoco.ToString("HH:mm");
                 if (hrInicial != "00:00" && hrFinal != "00:00")
                 {
-                    registro.Manha = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal, 1));
+                    registro.Manha = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal));
                 }
 
                 hrInicial = registro.Retorno.ToString("HH:mm");
@@ -203,7 +207,7 @@ namespace SharpPonto
                 
                 if (hrInicial != "00:00" && hrFinal != "00:00")
                 {
-                    registro.Tarde = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal, 1));
+                    registro.Tarde = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal));
                 }
 
                 var totalManha = registro.Manha.ToString("HH:mm");
@@ -211,7 +215,7 @@ namespace SharpPonto
 
                 if (totalManha != "00:00" && totalTarde != "00:00")
                 {
-                    registro.TotalDia = TimeOnly.FromTimeSpan(CalcularPeriodo(totalManha, totalTarde, 2));
+                    registro.TotalDia = TimeOnly.FromTimeSpan(CalcularTotalDia(totalManha, totalTarde));
                 }
             }
 
@@ -219,6 +223,7 @@ namespace SharpPonto
             {
                 Dados.Database.InserirRegistro(registro, 5);
                 ExibirDados();
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -309,27 +314,36 @@ namespace SharpPonto
         }
         #endregion
 
-        #region "Calculos"
-        private static TimeSpan CalcularPeriodo(string hrInicial, string hrFinal, int tipo)
+        #region "Funções dos Calculos"
+        private static TimeSpan CalcularPeriodo(string hrInicial, string hrFinal)
         {
             try
             {
                 var inicio = TimeOnly.Parse(hrInicial);
                 var fim = TimeOnly.Parse(hrFinal);
 
-                if (tipo == 1)
-                {
-                    return fim.ToTimeSpan() - inicio.ToTimeSpan();
-                }
-                else
-                {
-                    return fim.ToTimeSpan() + inicio.ToTimeSpan();
-                }
-                
+                return fim.ToTimeSpan() - inicio.ToTimeSpan();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao calcular o tempo percorrido: " + ex.Message);
+            }
+
+            return TimeSpan.Zero;
+        }
+
+        private static TimeSpan CalcularTotalDia(string totalManha, string totalTarde)
+        {
+            try
+            {
+                var inicio = TimeOnly.Parse(totalManha);
+                var fim = TimeOnly.Parse(totalTarde);
+
+                return inicio.ToTimeSpan() + fim.ToTimeSpan();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao calcular o tempo total: " + ex.Message);
             }
 
             return TimeSpan.Zero;
