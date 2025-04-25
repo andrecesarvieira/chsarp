@@ -29,7 +29,7 @@ namespace SharpPonto25
             dgvRegistros.Columns["gridTarde"].HeaderCell.Style.BackColor = Color.LightSteelBlue;
             dgvRegistros.Columns["gridTotal"].HeaderCell.Style.BackColor = Color.LightGoldenrodYellow;
 
-            lblPath.Text = $"Banco de dados => {AppDbContext.CaminhoDb()}";
+            //lblPath.Text = $"Banco de dados => {AppDbContext.CaminhoDb()}";
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
