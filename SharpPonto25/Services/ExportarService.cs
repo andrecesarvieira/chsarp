@@ -5,8 +5,16 @@ using SharpPonto25.Interfaces;
 
 namespace SharpPonto25.Services
 {
+    /// <summary>
+    /// Módulo para tratar a exportação dos registros selecionados para um arquivo csv
+    /// </summary>
     public class ExportarService : IExportarService
     {
+        /// <summary>
+        /// Cria arquivo e grava registros selecionados
+        /// </summary>
+        /// <param name="registros"></param>
+        /// <returns></returns>
         public async Task<(bool, string)> ExportarArquivoAsync(List<Registro> registros)
         {
             if (registros is null || registros.Count == 0)

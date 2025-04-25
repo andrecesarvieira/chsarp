@@ -5,11 +5,19 @@ using SharpPonto25.Services;
 
 namespace SharpPonto25
 {
+    /// <summary>
+    /// Classe principal do formulário
+    /// </summary>
     public partial class MainForm : Form
     {
         private readonly IRegistroService _registroService;
         private readonly IExportarService _exportarService;
 
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="registroService"></param>
+        /// <param name="exportarService"></param>
         public MainForm(IRegistroService registroService, IExportarService exportarService)
         {
             InitializeComponent();
@@ -110,14 +118,7 @@ namespace SharpPonto25
         {
             try
             {
-                string[] dados =
-                {
-                    textData.Text,
-                    textEntrada.Text,
-                    textAlmoco.Text,
-                    textRetorno.Text,
-                    textSaida.Text,
-                };
+                string[] dados = [textData.Text, textEntrada.Text, textAlmoco.Text, textRetorno.Text, textSaida.Text];
 
                 ConverterDataHoraService conv = new();
                 Registro novoRegistro = conv.ConverterDataHora(dados);
