@@ -240,6 +240,7 @@
             dgvRegistros.Size = new Size(868, 397);
             dgvRegistros.TabIndex = 9;
             dgvRegistros.TabStop = false;
+            dgvRegistros.RowHeaderMouseClick += dgvRegistros_RowHeaderMouseClick;
             // 
             // gridId
             // 
