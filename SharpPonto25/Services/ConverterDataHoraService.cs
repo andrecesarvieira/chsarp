@@ -4,6 +4,8 @@ namespace SharpPonto25.Services
 {
     public class ConverterDataHoraService
     {
+        private readonly TimeOnly _tempoVazio = TimeOnly.FromDateTime(DateTime.MinValue);
+
         public Registro ConverterDataHora(string[] dados)
         {
             DateOnly data = DateOnly.TryParse(dados[0], out DateOnly temp) ? temp : DateOnly.MinValue;
@@ -19,9 +21,9 @@ namespace SharpPonto25.Services
                 Almoco = almoco,
                 Retorno = retorno,
                 Saida = saida,
-                Manha = TimeOnly.FromDateTime(DateTime.MinValue),
-                Tarde = TimeOnly.FromDateTime(DateTime.MinValue),
-                TotalDia = TimeOnly.FromDateTime(DateTime.MinValue)
+                Manha = _tempoVazio,
+                Tarde = _tempoVazio,
+                TotalDia = _tempoVazio
             };
 
             return novoRegistro;

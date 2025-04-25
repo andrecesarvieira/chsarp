@@ -49,7 +49,7 @@ namespace SharpPonto25
             }
         }
 
-        private async void btnRegistrar_Click(object sender, EventArgs e)
+        private async void BtnRegistrar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace SharpPonto25
             }
         }
 
-        private async void btnExcluir_Click(object sender, EventArgs e)
+        private async void BtnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace SharpPonto25
             }
         }
 
-        private async void btnInserir_Click(object sender, EventArgs e)
+        private async void BtnInserir_Click(object sender, EventArgs e)
         {
             try
             {
@@ -145,7 +145,7 @@ namespace SharpPonto25
             }
         }
 
-        private async void btnExportar_Click(object sender, EventArgs e)
+        private async void BtnExportar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -187,11 +187,18 @@ namespace SharpPonto25
             }
         }
 
-        private void dgvRegistros_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void DgvRegistros_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (dgvRegistros.CurrentRow?.DataBoundItem is Registro r)
+            if (e.RowIndex >= 0)
             {
-                textData.Text = r.Data.ToString();
+                if (dgvRegistros.CurrentRow?.DataBoundItem is Registro r)
+                {
+                    textData.Text = r.Data.ToString();
+                    textEntrada.Text = r.Entrada.ToString();
+                    textAlmoco.Text = r.Almoco.ToString();
+                    textRetorno.Text = r.Retorno.ToString();
+                    textSaida.Text = r.Saida.ToString();
+                }
             }
         }
     }

@@ -75,7 +75,7 @@
             btnRegistrar.TabStop = false;
             btnRegistrar.Text = "Registrar";
             btnRegistrar.UseVisualStyleBackColor = true;
-            btnRegistrar.Click += btnRegistrar_Click;
+            btnRegistrar.Click += BtnRegistrar_Click;
             // 
             // btnExportar
             // 
@@ -87,7 +87,7 @@
             btnExportar.TabStop = false;
             btnExportar.Text = "Exportar CSV";
             btnExportar.UseVisualStyleBackColor = true;
-            btnExportar.Click += btnExportar_Click;
+            btnExportar.Click += BtnExportar_Click;
             // 
             // btnExcluir
             // 
@@ -99,7 +99,7 @@
             btnExcluir.TabStop = false;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = true;
-            btnExcluir.Click += btnExcluir_Click;
+            btnExcluir.Click += BtnExcluir_Click;
             // 
             // textData
             // 
@@ -173,7 +173,7 @@
             btnInserir.TabIndex = 5;
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = true;
-            btnInserir.Click += btnInserir_Click;
+            btnInserir.Click += BtnInserir_Click;
             // 
             // lblPath
             // 
@@ -240,7 +240,7 @@
             dgvRegistros.Size = new Size(868, 397);
             dgvRegistros.TabIndex = 9;
             dgvRegistros.TabStop = false;
-            dgvRegistros.RowHeaderMouseClick += dgvRegistros_RowHeaderMouseClick;
+            dgvRegistros.CellMouseDoubleClick += DgvRegistros_CellMouseDoubleClick;
             // 
             // gridId
             // 

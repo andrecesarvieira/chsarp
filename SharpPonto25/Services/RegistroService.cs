@@ -7,6 +7,7 @@ namespace SharpPonto25.Services
     public class RegistroService : IRegistroService
     {
         private readonly IRegistroRepository _repository;
+        private readonly TimeOnly _tempoVazio = TimeOnly.FromDateTime(DateTime.MinValue);
 
         public RegistroService(IRegistroRepository repository)
         {
@@ -43,12 +44,12 @@ namespace SharpPonto25.Services
                 {
                     Data = dataHoje,
                     Entrada = horaAtual,
-                    Almoco = TimeOnly.FromDateTime(DateTime.MinValue),
-                    Retorno = TimeOnly.FromDateTime(DateTime.MinValue),
-                    Saida = TimeOnly.FromDateTime(DateTime.MinValue),
-                    Manha = TimeOnly.FromDateTime(DateTime.MinValue),
-                    Tarde = TimeOnly.FromDateTime(DateTime.MinValue),
-                    TotalDia = TimeOnly.FromDateTime(DateTime.MinValue)
+                    Almoco = _tempoVazio,
+                    Retorno = _tempoVazio,
+                    Saida = _tempoVazio,
+                    Manha = _tempoVazio,
+                    Tarde = _tempoVazio,
+                    TotalDia = _tempoVazio
                 };
 
                 await _repository.InserirRegistroAsync(novoRegistro);
