@@ -67,38 +67,41 @@
             // 
             // btnRegistrar
             // 
+            btnRegistrar.FlatStyle = FlatStyle.System;
             btnRegistrar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnRegistrar.Location = new Point(12, 421);
+            btnRegistrar.Location = new Point(12, 418);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(278, 62);
             btnRegistrar.TabIndex = 6;
             btnRegistrar.TabStop = false;
             btnRegistrar.Text = "Registrar";
-            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.UseVisualStyleBackColor = false;
             btnRegistrar.Click += BtnRegistrar_Click;
             // 
             // btnExportar
             // 
+            btnExportar.FlatStyle = FlatStyle.System;
             btnExportar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnExportar.Location = new Point(308, 421);
+            btnExportar.Location = new Point(308, 418);
             btnExportar.Name = "btnExportar";
             btnExportar.Size = new Size(278, 62);
             btnExportar.TabIndex = 7;
             btnExportar.TabStop = false;
             btnExportar.Text = "Exportar CSV";
-            btnExportar.UseVisualStyleBackColor = true;
+            btnExportar.UseVisualStyleBackColor = false;
             btnExportar.Click += BtnExportar_Click;
             // 
             // btnExcluir
             // 
+            btnExcluir.FlatStyle = FlatStyle.System;
             btnExcluir.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnExcluir.Location = new Point(602, 421);
+            btnExcluir.Location = new Point(602, 418);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(278, 62);
             btnExcluir.TabIndex = 8;
             btnExcluir.TabStop = false;
             btnExcluir.Text = "Excluir";
-            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.UseVisualStyleBackColor = false;
             btnExcluir.Click += BtnExcluir_Click;
             // 
             // textData
@@ -166,23 +169,25 @@
             // 
             // btnInserir
             // 
+            btnInserir.FlatStyle = FlatStyle.System;
             btnInserir.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnInserir.Location = new Point(722, 491);
+            btnInserir.Location = new Point(722, 488);
             btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(158, 44);
+            btnInserir.Size = new Size(158, 43);
             btnInserir.TabIndex = 5;
             btnInserir.Text = "Inserir";
-            btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.UseVisualStyleBackColor = false;
             btnInserir.Click += BtnInserir_Click;
             // 
             // lblPath
             // 
             lblPath.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblPath.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPath.Location = new Point(12, 544);
+            lblPath.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPath.Location = new Point(12, 538);
             lblPath.Name = "lblPath";
             lblPath.Size = new Size(868, 20);
             lblPath.TabIndex = 10;
+            lblPath.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dgvRegistros
             // 
@@ -194,7 +199,7 @@
             dgvRegistros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvRegistros.Anchor = AnchorStyles.None;
             dgvRegistros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvRegistros.BackgroundColor = SystemColors.Control;
+            dgvRegistros.BackgroundColor = SystemColors.ScrollBar;
             dgvRegistros.BorderStyle = BorderStyle.None;
             dgvRegistros.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -397,7 +402,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(892, 569);
+            ClientSize = new Size(892, 567);
             Controls.Add(lblPath);
             Controls.Add(btnInserir);
             Controls.Add(textSaida);
