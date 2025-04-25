@@ -46,7 +46,7 @@ namespace SharpPonto25.Services
 
                 return (true, caminhoArquivo);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return (false, "");
             }

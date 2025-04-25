@@ -22,15 +22,14 @@ namespace SharpPonto25
             dgvRegistros.Columns["gridTotal"].HeaderCell.Style.BackColor = Color.LightGoldenrodYellow;
 
             lblPath.Text = $"Banco de dados => {AppDbContext.CaminhoDb()}";
-        }
+         }
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
             using (var ctx = new AppDbContext())
             {
                 ctx.AplicarMigracao();
-            }
-            ;
+            };
 
             await CarregarDadosAsync();
         }
@@ -184,14 +183,6 @@ namespace SharpPonto25
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao exportar registros: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dgvRegistros_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (dgvRegistros.CurrentRow?.DataBoundItem is Registro r)
-            {
-                textData.Text = r.Data.ToString();
             }
         }
     }

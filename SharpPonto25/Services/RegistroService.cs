@@ -73,9 +73,10 @@ namespace SharpPonto25.Services
                 else if (registro.Saida == TimeOnly.FromDateTime(DateTime.MinValue))
                     registro.Saida = horaAtual;
 
-                var reg = CalcularHorasService.CalcularHorasRegistro(registro);
+                CalcularHorasService calc = new();
+                registro = calc.CalcularHorasRegistro(registro);
 
-                await _repository.AtualizarRegistroAsync(reg);
+                await _repository.AtualizarRegistroAsync(registro);
             }
 
             await _repository.SalvarMudancasRegistroAsync();
@@ -89,9 +90,10 @@ namespace SharpPonto25.Services
 
             if (!registroExiste)
             {
-                var reg = CalcularHorasService.CalcularHorasRegistro(registro);
+                CalcularHorasService calc = new();
+                registro = calc.CalcularHorasRegistro(registro);
 
-                await _repository.InserirRegistroAsync(reg);
+                await _repository.InserirRegistroAsync(registro);
                 await _repository.SalvarMudancasRegistroAsync();
                 return true;
             }
