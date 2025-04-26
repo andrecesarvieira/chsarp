@@ -1,7 +1,7 @@
 ﻿
 namespace MySQL_Gerador
 {
-    partial class Frm_MySQL_Gerador
+    partial class MainForm
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -29,42 +29,42 @@ namespace MySQL_Gerador
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_MySQL_Gerador));
-            this.Txt_Campos = new System.Windows.Forms.RichTextBox();
-            this.Txt_Insert_Campos = new System.Windows.Forms.RichTextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.txtCampos = new System.Windows.Forms.RichTextBox();
+            this.txtInsertCampos = new System.Windows.Forms.RichTextBox();
             this.Btn_Gerar = new System.Windows.Forms.Button();
-            this.Txt_Update = new System.Windows.Forms.RichTextBox();
+            this.txtUpdate = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Txt_Parametros = new System.Windows.Forms.RichTextBox();
+            this.txtParamentros = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Txt_Propriedades = new System.Windows.Forms.RichTextBox();
+            this.txtPropriedades = new System.Windows.Forms.RichTextBox();
             this.Btn_Limpar = new System.Windows.Forms.Button();
-            this.Txt_Insert_Values = new System.Windows.Forms.RichTextBox();
+            this.txtInsertValues = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Txt_Campos
             // 
-            this.Txt_Campos.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Campos.Location = new System.Drawing.Point(15, 46);
-            this.Txt_Campos.Name = "Txt_Campos";
-            this.Txt_Campos.Size = new System.Drawing.Size(372, 303);
-            this.Txt_Campos.TabIndex = 0;
-            this.Txt_Campos.Text = "nome varchar;";
+            this.txtCampos.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCampos.Location = new System.Drawing.Point(15, 46);
+            this.txtCampos.Name = "Txt_Campos";
+            this.txtCampos.Size = new System.Drawing.Size(372, 303);
+            this.txtCampos.TabIndex = 0;
+            this.txtCampos.Text = "";
             // 
             // Txt_Insert_Campos
             // 
-            this.Txt_Insert_Campos.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Insert_Campos.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.Txt_Insert_Campos.Location = new System.Drawing.Point(403, 225);
-            this.Txt_Insert_Campos.Name = "Txt_Insert_Campos";
-            this.Txt_Insert_Campos.ReadOnly = true;
-            this.Txt_Insert_Campos.Size = new System.Drawing.Size(818, 124);
-            this.Txt_Insert_Campos.TabIndex = 1;
-            this.Txt_Insert_Campos.Text = "";
+            this.txtInsertCampos.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInsertCampos.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.txtInsertCampos.Location = new System.Drawing.Point(403, 225);
+            this.txtInsertCampos.Name = "Txt_Insert_Campos";
+            this.txtInsertCampos.ReadOnly = true;
+            this.txtInsertCampos.Size = new System.Drawing.Size(818, 124);
+            this.txtInsertCampos.TabIndex = 1;
+            this.txtInsertCampos.Text = "";
             // 
             // Btn_Gerar
             // 
@@ -79,14 +79,14 @@ namespace MySQL_Gerador
             // 
             // Txt_Update
             // 
-            this.Txt_Update.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Update.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.Txt_Update.Location = new System.Drawing.Point(403, 524);
-            this.Txt_Update.Name = "Txt_Update";
-            this.Txt_Update.ReadOnly = true;
-            this.Txt_Update.Size = new System.Drawing.Size(818, 141);
-            this.Txt_Update.TabIndex = 3;
-            this.Txt_Update.Text = "";
+            this.txtUpdate.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUpdate.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.txtUpdate.Location = new System.Drawing.Point(403, 524);
+            this.txtUpdate.Name = "Txt_Update";
+            this.txtUpdate.ReadOnly = true;
+            this.txtUpdate.Size = new System.Drawing.Size(818, 141);
+            this.txtUpdate.TabIndex = 3;
+            this.txtUpdate.Text = "";
             // 
             // label1
             // 
@@ -120,14 +120,14 @@ namespace MySQL_Gerador
             // 
             // Txt_Parametros
             // 
-            this.Txt_Parametros.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Parametros.ForeColor = System.Drawing.Color.Maroon;
-            this.Txt_Parametros.Location = new System.Drawing.Point(403, 46);
-            this.Txt_Parametros.Name = "Txt_Parametros";
-            this.Txt_Parametros.ReadOnly = true;
-            this.Txt_Parametros.Size = new System.Drawing.Size(818, 150);
-            this.Txt_Parametros.TabIndex = 7;
-            this.Txt_Parametros.Text = "";
+            this.txtParamentros.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParamentros.ForeColor = System.Drawing.Color.Maroon;
+            this.txtParamentros.Location = new System.Drawing.Point(403, 46);
+            this.txtParamentros.Name = "Txt_Parametros";
+            this.txtParamentros.ReadOnly = true;
+            this.txtParamentros.Size = new System.Drawing.Size(818, 150);
+            this.txtParamentros.TabIndex = 7;
+            this.txtParamentros.Text = "";
             // 
             // label4
             // 
@@ -151,14 +151,14 @@ namespace MySQL_Gerador
             // 
             // Txt_Propriedades
             // 
-            this.Txt_Propriedades.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Propriedades.ForeColor = System.Drawing.Color.Indigo;
-            this.Txt_Propriedades.Location = new System.Drawing.Point(12, 375);
-            this.Txt_Propriedades.Name = "Txt_Propriedades";
-            this.Txt_Propriedades.ReadOnly = true;
-            this.Txt_Propriedades.Size = new System.Drawing.Size(375, 290);
-            this.Txt_Propriedades.TabIndex = 9;
-            this.Txt_Propriedades.Text = "";
+            this.txtPropriedades.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPropriedades.ForeColor = System.Drawing.Color.Indigo;
+            this.txtPropriedades.Location = new System.Drawing.Point(12, 375);
+            this.txtPropriedades.Name = "Txt_Propriedades";
+            this.txtPropriedades.ReadOnly = true;
+            this.txtPropriedades.Size = new System.Drawing.Size(375, 290);
+            this.txtPropriedades.TabIndex = 9;
+            this.txtPropriedades.Text = "";
             // 
             // Btn_Limpar
             // 
@@ -173,14 +173,14 @@ namespace MySQL_Gerador
             // 
             // Txt_Insert_Values
             // 
-            this.Txt_Insert_Values.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Insert_Values.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.Txt_Insert_Values.Location = new System.Drawing.Point(403, 375);
-            this.Txt_Insert_Values.Name = "Txt_Insert_Values";
-            this.Txt_Insert_Values.ReadOnly = true;
-            this.Txt_Insert_Values.Size = new System.Drawing.Size(818, 128);
-            this.Txt_Insert_Values.TabIndex = 12;
-            this.Txt_Insert_Values.Text = "";
+            this.txtInsertValues.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInsertValues.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.txtInsertValues.Location = new System.Drawing.Point(403, 375);
+            this.txtInsertValues.Name = "Txt_Insert_Values";
+            this.txtInsertValues.ReadOnly = true;
+            this.txtInsertValues.Size = new System.Drawing.Size(818, 128);
+            this.txtInsertValues.TabIndex = 12;
+            this.txtInsertValues.Text = "";
             // 
             // label6
             // 
@@ -192,30 +192,30 @@ namespace MySQL_Gerador
             this.label6.TabIndex = 13;
             this.label6.Text = "Insert (Values)";
             // 
-            // Frm_MySQL_Gerador
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1233, 743);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.Txt_Insert_Values);
+            this.Controls.Add(this.txtInsertValues);
             this.Controls.Add(this.Btn_Limpar);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.Txt_Propriedades);
+            this.Controls.Add(this.txtPropriedades);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Txt_Parametros);
+            this.Controls.Add(this.txtParamentros);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Txt_Update);
+            this.Controls.Add(this.txtUpdate);
             this.Controls.Add(this.Btn_Gerar);
-            this.Controls.Add(this.Txt_Insert_Campos);
-            this.Controls.Add(this.Txt_Campos);
+            this.Controls.Add(this.txtInsertCampos);
+            this.Controls.Add(this.txtCampos);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Frm_MySQL_Gerador";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MySQL Gerador";
             this.ResumeLayout(false);
@@ -225,19 +225,19 @@ namespace MySQL_Gerador
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox Txt_Campos;
-        private System.Windows.Forms.RichTextBox Txt_Insert_Campos;
+        private System.Windows.Forms.RichTextBox txtCampos;
+        private System.Windows.Forms.RichTextBox txtInsertCampos;
         private System.Windows.Forms.Button Btn_Gerar;
-        private System.Windows.Forms.RichTextBox Txt_Update;
+        private System.Windows.Forms.RichTextBox txtUpdate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox Txt_Parametros;
+        private System.Windows.Forms.RichTextBox txtParamentros;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RichTextBox Txt_Propriedades;
+        private System.Windows.Forms.RichTextBox txtPropriedades;
         private System.Windows.Forms.Button Btn_Limpar;
-        private System.Windows.Forms.RichTextBox Txt_Insert_Values;
+        private System.Windows.Forms.RichTextBox txtInsertValues;
         private System.Windows.Forms.Label label6;
     }
 }

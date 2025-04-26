@@ -16,7 +16,7 @@ namespace MySQL_Gerador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_MySQL_Gerador());
+            Application.Run(new MainForm());
         }
     }
 }
