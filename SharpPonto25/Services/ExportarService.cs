@@ -28,7 +28,7 @@ namespace SharpPonto25.Services
             {
                 using var streamWriter = new StreamWriter(caminhoArquivo, false, Encoding.UTF8);
 
-                foreach (var registro in registros.OrderBy(r => r.Data))
+                foreach (var registro in registros.OrderByDescending(r => r.Data))
                 {
                     // Formata a data para o padrão dd/MMM/yy em pt-BR  
                     string dataFormatada = registro.Data.ToString("dd/MMM/yy", new CultureInfo("pt-BR"))
