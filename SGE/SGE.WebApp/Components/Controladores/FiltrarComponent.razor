@@ -1,0 +1,28 @@
+﻿@if (BuscarFiltro == null)
+{
+    BuscarFiltro = string.Empty;
+}
+
+<EditForm Enhance="true" Model="BuscarFiltro" FormName="formFiltro" OnSubmit="Filtrar">
+    <div class="input-group">
+        <InputText @bind-Value="BuscarFiltro"
+                   class="form-control"
+                   placeholder="Digite algo para filtrar" />
+        <div class="ms-1"></div>
+        <button type="submit" class="btn-success input-group-text">Filtrar</button>
+    </div>
+</EditForm>
+
+@code {
+
+    [SupplyParameterFromForm]
+    private string BuscarFiltro { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> OnBuscarFiltro { get; set; }
+
+    private void Filtrar(EditContext args)
+    {
+        OnBuscarFiltro.InvokeAsync(BuscarFiltro);
+    }
+}

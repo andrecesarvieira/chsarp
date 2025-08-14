@@ -1,0 +1,56 @@
+﻿@page "/editarproduto/{produtoId:int}"
+
+@inject NavigationManager Navegar;
+@inject IBuscarProdutoPorID Buscar;
+@inject IEditarProduto Editar;
+
+<h3>Editar Produto</h3>
+
+@if (Produto != null)
+{
+    <EditForm Model="Produto" FormName="formInventario" OnValidSubmit="Atualizar">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+
+        <InputNumber @bind-Value="Produto.Id" hidden></InputNumber>
+
+        <div class="from-group">
+            <label for="nome">Nome</label>
+            <InputText id="nome" @bind-Value="Produto.Nome" class="form-control"></InputText>
+        </div>
+        <div class="from-group">
+            <label for="quantidade">Quantidade</label>
+            <InputNumber id="quantidade" @bind-Value="Produto.Quantidade" class="form-control"></InputNumber>
+        </div>
+        <div class="from-group">
+            <label for="preco">Preço</label>
+            <InputNumber id="preco" @bind-Value="Produto.Preco" class="form-control"></InputNumber>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="/produtos" class="btn btn-secondary">Voltar</a>
+    </EditForm>
+}
+
+@code {
+
+    [Parameter]
+    public int ProdutoId { get; set; }
+
+    [SupplyParameterFromForm]
+    private Produto? Produto { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Produto ??= await Buscar.ExecutarAsync(ProdutoId);
+    }
+
+    private async Task Atualizar()
+    {
+        if (Produto != null)
+        {
+            await Editar.ExecutarAsync(Produto);
+            Navegar.NavigateTo("/produtos");
+        }
+    }
+}
