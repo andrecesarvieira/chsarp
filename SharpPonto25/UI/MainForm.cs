@@ -5,28 +5,20 @@ using SharpPonto25.Services;
 
 namespace SharpPonto25
 {
-    /// <summary>
-    /// Classe principal do formulário
-    /// </summary>
     public partial class MainForm : Form
     {
         private readonly IRegistroService _registroService;
         private readonly IExportarService _exportarService;
 
-        /// <summary>
-        /// Construtor
-        /// </summary>
-        /// <param name="registroService"></param>
-        /// <param name="exportarService"></param>
         public MainForm(IRegistroService registroService, IExportarService exportarService)
         {
             InitializeComponent();
 
-            // Configurar tema baseado nas configurações do sistema
-            ConfigurarTemaVisual();
-
             _registroService = registroService;
             _exportarService = exportarService;
+
+            // Configurar tema baseado nas configurações do sistema
+            //ConfigurarTemaVisual();
 
             //dgvRegistros.Columns["gridManha"].HeaderCell.Style.BackColor = Color.LightSteelBlue;
             //dgvRegistros.Columns["gridTarde"].HeaderCell.Style.BackColor = Color.LightSteelBlue;

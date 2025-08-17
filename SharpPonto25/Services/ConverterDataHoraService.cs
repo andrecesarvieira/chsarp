@@ -2,18 +2,10 @@
 
 namespace SharpPonto25.Services
 {
-    /// <summary>
-    /// Módulo para tratar as conversões de data e hora
-    /// </summary>
     public class ConverterDataHoraService
     {
         private readonly TimeOnly _tempoVazio = TimeOnly.FromDateTime(DateTime.MinValue);
 
-        /// <summary>
-        /// Faz a conversão da data e horários em string para o tipo apropriado
-        /// </summary>
-        /// <param name="dados"></param>
-        /// <returns></returns>
         public Registro ConverterDataHora(string[] dados)
         {
             DateOnly data = DateOnly.TryParse(dados[0], out DateOnly temp) ? temp : DateOnly.MinValue;

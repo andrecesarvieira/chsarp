@@ -2,16 +2,8 @@
 
 namespace SharpPonto25.Services
 {
-    /// <summary>
-    /// Módulo para calcular o tempo entre períodos e o total do dia
-    /// </summary>
     public class CalcularHorasService
     {
-        /// <summary>
-        /// Faz o cálculos entre os períodos
-        /// </summary>
-        /// <param name="registro"></param>
-        /// <returns></returns>
         public static Registro CalcularHorasRegistro(Registro registro)
         {
             if (registro.Entrada != TimeOnly.FromDateTime(DateTime.MinValue) &&
